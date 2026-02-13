@@ -8,8 +8,6 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
-
-token: 722e6cc71fb31b8f8756f0cd75b18815ead37c96
 """
 
 import os
