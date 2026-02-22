@@ -10,6 +10,7 @@ from rest_framework import permissions
 
 from .models import Curso, Avaliacao
 from .serializers import CursoSerializer, AvaliacaoSerializer
+from .permissions import EhSuperUser
 
 """
 API V1
@@ -54,11 +55,13 @@ API V2
 """
 
 class CursoViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.DjangoModelPermissions, )
+    permission_classes = (
+        EhSuperUser,
+        permissions.DjangoModelPermissions, )
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
 
-    @action(detail=True, methods=['get'])
+    @action(detail=True, methods=['get', 'post'])
     def avaliacoes(self, request, pk=None):
         self.pagination_class.page_size = 1
         avaliacoes = Avaliacao.objects.filter(curso_id=pk)

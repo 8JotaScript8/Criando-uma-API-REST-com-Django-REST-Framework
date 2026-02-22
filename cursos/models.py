@@ -33,12 +33,7 @@ class Avaliacao(Base):
     class Meta:
         verbose_name = 'Avaliação'
         verbose_name_plural = 'Avaliações'
-        constraints = [
-            models.UniqueConstraint(
-                fields=['email', 'curso'],
-                name='unique_email_curso'
-            )
-        ]
+        unique_together = ['email', 'curso']
         ordering = ['id']
 
     def __str__(self):
